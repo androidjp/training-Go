@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"reflect"
 	"unsafe"
 )
 
@@ -24,4 +25,11 @@ func main() {
 		a_type_size = unsafe.Sizeof(a_1)
 	)
 	println(a_1, a_len, a_type_size)
+
+	//----------------------------------------
+	println("打印类型")
+	const x = 0.0
+	const y = 1
+	println(x, y)
+	fmt.Println(reflect.TypeOf(x).Kind(), reflect.TypeOf(y).Kind())
 }
