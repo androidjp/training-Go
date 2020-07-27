@@ -13,4 +13,11 @@ LOOP:
 		fmt.Println(a)
 		a++
 	}
+
+	for i := 0; i < 10; i++ {
+		println("i = ", i)
+		if i == 5 {
+			break
+		}
+	}
 }
