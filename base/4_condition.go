@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
 	// 条件语句
@@ -22,5 +25,22 @@ func main() {
 		fallthrough
 	default:
 		fmt.Println("6、默认 case")
+	}
+
+	nowTime := time.Now()
+	switch nowTime.Weekday() {
+	case time.Saturday:
+		fmt.Println("Take a rest")
+	case time.Sunday:
+		fmt.Println("Take a rest")
+	default:
+		fmt.Println("Coding")
+	}
+
+	switch {
+	case nowTime.Weekday() >= time.Monday && nowTime.Weekday() <= time.Friday:
+		fmt.Println("weekday, you need work")
+	default:
+		fmt.Println("weekend~~")
 	}
 }
