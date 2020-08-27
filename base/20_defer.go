@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func add(a, b int) int {
+func add1(a, b int) int {
 	return a + b
 }
 
@@ -13,11 +13,11 @@ defer: 延迟执行，用于进行资源释放等
 func main() {
 	a := 1
 	b := 2
-	defer fmt.Println("front result:", add(a, b)) // 3
+	defer fmt.Println("front result:", add1(a, b)) // 3
 	a = 3
 	b = 4
-	defer fmt.Println("last result:", add(a, b)) // 7
+	defer fmt.Println("last result:", add1(a, b)) // 7
 	a = 5
 	b = 6
-	fmt.Println("final result:", add(a, b)) // 11
+	fmt.Println("final result:", add1(a, b)) // 11
 }
