@@ -10,16 +10,13 @@ type Tool struct {
 // 2. 创建私有变量
 var instance *Tool
 
-// 3. 锁对象（用于保证线程安全）
-var lock sync.Mutex
+var once sync.Once
 
-// 4. 获取单例对象的方法，引用传递 返回
+// 3. once.Do 只会执行一次
 func GetInstance() *Tool {
-	lock.Lock()
-	defer lock.Unlock()
-	if instance == nil {
+	once.Do(func() {
 		instance = new(Tool)
-	}
+	})
 	return instance
 }
 
