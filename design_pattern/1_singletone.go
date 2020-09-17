@@ -2,34 +2,31 @@ package main
 
 import "sync"
 
-// 消息池
-type messagePool struct {
-	pool *sync.Pool
+// 1. 结构体 代替 类
+type Tool struct {
+	values int
 }
 
-// 消息体
-type Message struct {
-	Count int
+// 2. 创建私有变量
+var instance *Tool
+
+// 3. 锁对象（用于保证线程安全）
+var lock sync.Mutex
+
+// 4. 获取单例对象的方法，引用传递 返回
+func GetInstance() *Tool {
+	lock.Lock()
+	defer lock.Unlock()
+	if instance == nil {
+		instance = new(Tool)
+	}
+	return instance
 }
 
-// 消息池单例
-var msgPool = &messagePool{
-	pool: &sync.Pool{New: func() interface{} {
-		return &Message{Count: 0}
-	}},
+func (tool *Tool) GetValues() int {
+	return tool.values
 }
 
-// 访问消息池单例的唯一方法
-func Instance() *messagePool {
-	return msgPool
-}
-
-// 添加消息
-func (mp *messagePool) AddMsg(msg *Message) {
-	mp.pool.Put(msg)
-}
-
-// 获取消息
-func (mp *messagePool) GetMsg() *Message {
-	return mp.pool.Get().(*Message)
+func (tool *Tool) SetValues(x int) {
+	tool.values = x
 }
