@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"time"
 )
@@ -48,4 +49,15 @@ func main() {
 	if mm := "Mike"; mm == "Mike" {
 		fmt.Println("Oh yeah, mm is Mike!")
 	}
+
+	// error 对象同样，if-else代码块中随便用
+	if err := processA(); err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("hhh", err)
+	}
+}
+
+func processA() error {
+	return errors.New("My new error!!")
 }
