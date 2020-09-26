@@ -43,4 +43,9 @@ func main() {
 	default:
 		fmt.Println("weekend~~")
 	}
+
+	// 带初始化的if (先初始化mm)
+	if mm := "Mike"; mm == "Mike" {
+		fmt.Println("Oh yeah, mm is Mike!")
+	}
 }
