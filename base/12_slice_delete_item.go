@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // Go 语言切片是 对 数组 的抽象
 // Go 数组 长度不可改变，在特定场景中，这样的不可变集合不适用
 // 于是，Go提供了 一种灵活、功能强悍的内置类型切片（“动态数组”）
@@ -45,11 +43,4 @@ func deleteItemForSlice(list []int, x int) []int {
 		}
 	}
 	return list
-}
-
-func printSlice(x []int) {
-	//for i := 0; i < len(goodArr); i++ {
-	//	print(goodArr[i], ",")
-	//}
-	fmt.Printf("len=%d cap=%d slice=%v\n", len(x), cap(x), x)
 }
