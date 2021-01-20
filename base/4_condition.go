@@ -56,6 +56,15 @@ func main() {
 	} else {
 		fmt.Println("hhh", err)
 	}
+
+	x1 := 3
+	switch x1 {
+	case 1:
+		fmt.Println("x1 = 1")
+	case 2:
+		fmt.Println("x1 = 2")
+	}
+	// switch 没有default时， 直接啥都不做，继续往下执行
 }
 
 func processA() error {
